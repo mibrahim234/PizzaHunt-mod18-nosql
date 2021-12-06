@@ -50,7 +50,26 @@ const handlePizzaSubmit = event => {
     return;
   }
 
+  // The one thing missing from the handlePizzaSubmit() function is the ability to actually POST that form data to the API
   const formData = { pizzaName, createdBy, size, toppings };
+
+  fetch('/api/pizzas', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(formData)
+  })
+    .then(response => response.json())
+    .then(postResponse => {
+      alert('Pizza created successfully!');
+      console.log(postResponse);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+
 };
 
 $pizzaForm.addEventListener('submit', handlePizzaSubmit);
