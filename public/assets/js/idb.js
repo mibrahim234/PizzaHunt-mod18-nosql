@@ -76,5 +76,7 @@ function uploadPizza() {
   };
 }
 
+// reference
+
 // listen for app coming back online
 window.addEventListener('online', uploadPizza);
